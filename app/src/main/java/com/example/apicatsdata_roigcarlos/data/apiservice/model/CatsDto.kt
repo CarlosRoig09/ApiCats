@@ -22,6 +22,7 @@ data class CatsDto(
     @SerialName("adaptability"       ) var adaptability     : Int?    = null,
     @SerialName("affection_level"    ) var affectionLevel   : Int?    = null,
     @SerialName("child_friendly"     ) var childFriendly    : Int?    = null,
+    @SerialName("cat_friendly"       ) var catFriendly : Int? = null,
     @SerialName("dog_friendly"       ) var dogFriendly      : Int?    = null,
     @SerialName("energy_level"       ) var energyLevel      : Int?    = null,
     @SerialName("grooming"           ) var grooming         : Int?    = null,
@@ -36,11 +37,13 @@ data class CatsDto(
     @SerialName("natural"            ) var natural          : Int?    = null,
     @SerialName("rare"               ) var rare             : Int?    = null,
     @SerialName("rex"                ) var rex              : Int?    = null,
+    @SerialName("bidability"         ) var bidability       : Int?    = null,
     @SerialName("suppressed_tail"    ) var suppressedTail   : Int?    = null,
     @SerialName("short_legs"         ) var shortLegs        : Int?    = null,
     @SerialName("wikipedia_url"      ) var wikipediaUrl     : String? = null,
     @SerialName("hypoallergenic"     ) var hypoallergenic   : Int?    = null,
-    @SerialName("reference_image_id" ) var referenceImageId : String? = null
+    @SerialName("reference_image_id" ) var referenceImageId : String? = null,
+    @SerialName("image") var image : ImageDto? = null
 )
 
 @Serializable
