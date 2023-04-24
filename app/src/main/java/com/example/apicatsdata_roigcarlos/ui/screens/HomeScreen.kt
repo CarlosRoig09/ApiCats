@@ -7,11 +7,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.apicatsdata_roigcarlos.ui.model.CatsUIModel
+import com.example.apicatsdata_roigcarlos.ui.model.CatsDetailUIModel
 
 @Composable
 fun HomeScreen(
-    catsUIState: List<CatsUIModel>,
+    catsUIState: List<CatsDetailUIModel>,
     modifier: Modifier = Modifier
 ) {
     ResultScreen(catsUIState, modifier)
@@ -21,18 +21,18 @@ fun HomeScreen(
  * The home screen displaying result of fetching photos.
  */
 @Composable
-fun ResultScreen(catsUIModel: List<CatsUIModel>, modifier: Modifier = Modifier) {
+fun ResultScreen(catsDetailUIModel: List<CatsDetailUIModel>, modifier: Modifier = Modifier) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier.fillMaxSize()
     ) {
-        Text("Success: ${catsUIModel.size} Cats photos retrieved")
+        Text("Success: ${catsDetailUIModel.size} Cats photos retrieved")
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun ResultScreenPreview() {
-        ResultScreen(listOf(CatsUIModel(url = "A.", id = "11233"),CatsUIModel(url = "A.", id = "11233")))
+        ResultScreen(listOf(CatsDetailUIModel(url = "A.", id = "11233"),CatsDetailUIModel(url = "A.", id = "11233")))
 
 }
