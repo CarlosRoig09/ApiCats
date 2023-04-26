@@ -10,9 +10,11 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.http.Headers
+import retrofit2.http.Path
+import retrofit2.http.Query
 
-private const val BASE_URL = "https://api.thecatapi.com"
-private const val API_KEY = " live_ezoQO0tHaJktwB0l4pry5M7KoRHojpDgsLaWG4DZ8QKinr6jlQg5c3dXiEzwGpJn "
+private const val BASE_URL = "https://api.thecatapi.com/v1/"
+private const val API_KEY = "live_ezoQO0tHaJktwB0l4pry5M7KoRHojpDgsLaWG4DZ8QKinr6jlQg5c3dXiEzwGpJn"
 @OptIn(ExperimentalSerializationApi::class)
 private val retrofit = Retrofit.Builder().addConverterFactory(Json.asConverterFactory("application/json".toMediaType())).baseUrl(
     BASE_URL).build()
@@ -22,15 +24,10 @@ object CatsApi {
     }
 }
 interface  CatsApiService{
-    suspend fun getCatPhotos() : List<ImageDto>
-    {
-        return mutableListOf<ImageDto?>().apply {
-            getCats().forEach {
-                add(it.image)
-            }
-        }.toList().filterNotNull()
-    }
+
+    @GET("breeds")
+    suspend fun getCats(@Query("limit") limit: Int) : List<CatsDto>
     @Headers("x-api-key: $API_KEY")
-    @GET("./v1/breeds")
-    suspend fun getCats() : List<CatsDto>
+    @GET("images/search")
+    suspend fun getCatPhoto(@Query("breed_id") id : String?, @Query("limit") limit : Int) : List<ImageDto>
 }

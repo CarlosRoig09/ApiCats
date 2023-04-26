@@ -27,8 +27,8 @@ class CatsViewModel() : ViewModel() {
     private fun getCatsPhotos() {
 
         viewModelScope.launch {
-            val cats = CatsApi.retrofitService.getCats()
-            val photos = CatsApi.retrofitService.getCatPhotos()
+            val cats = CatsApi.retrofitService.getCats(15)
+            val photos = cats.map { CatsApi.retrofitService.getCatPhoto(it.id,1) }
            catsUiState = mapper.map(cats, photos)
         }
     }
