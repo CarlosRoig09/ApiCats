@@ -1,6 +1,6 @@
 package com.example.apicatsdata_roigcarlos.ui.model
 
-data class CatsDetailUIModel(
+data class CatDetailUIModel(
     val id : String? = null,
     val name: String? = null,
     val temperament : String? = null,

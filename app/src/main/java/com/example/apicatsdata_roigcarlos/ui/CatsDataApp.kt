@@ -11,11 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.apicatsdata_roigcarlos.R
+import com.example.apicatsdata_roigcarlos.ui.model.CatDetailUIModel
+import com.example.apicatsdata_roigcarlos.ui.screens.CatsList
 import com.example.apicatsdata_roigcarlos.ui.screens.CatsViewModel
-import com.example.apicatsdata_roigcarlos.ui.screens.HomeScreen
 
 @Composable
-fun CatsDataApp(modifier: Modifier = Modifier) {
+fun CatsDataApp(modifier: Modifier = Modifier,onMoreDetails: (cat: CatDetailUIModel?) -> Unit) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = { TopAppBar(title = { Text(stringResource(R.string.app_name)) }) }
@@ -27,9 +28,8 @@ fun CatsDataApp(modifier: Modifier = Modifier) {
             color = MaterialTheme.colors.background
         ) {
             val catsUIModel: CatsViewModel = viewModel()
-            HomeScreen(
-                catsUIModel.catsUiState
-            )
+            CatsList(catsList = catsUIModel.catsUiState, onMoreDetails = onMoreDetails)
+           // HomeScreen(catsUIState = catsUIModel.catsUiState)
         }
     }
 }
