@@ -1,7 +1,6 @@
 package com.example.apicatsdata_roigcarlos.ui.screens
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -17,11 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.apicatsdata_roigcarlos.ui.model.CatsDetailUIModel
-import coil.compose.rememberAsyncImagePainter
+import coil.compose.AsyncImage
+import com.example.apicatsdata_roigcarlos.ui.model.CatDetailUIModel
 
 @Composable
-fun CatsList(catsList: List<CatsDetailUIModel>, onMoreDetails: (id: CatsDetailUIModel?) -> Unit) {
+fun CatsList(catsList: List<CatDetailUIModel>, onMoreDetails: (id: CatDetailUIModel?) -> Unit) {
     // TODO 3. Wrap affirmation card in a lazy column
     LazyColumn{
         items(catsList){cat -> CatsCard(cat, onMoreDetails = onMoreDetails)}
@@ -29,7 +28,7 @@ fun CatsList(catsList: List<CatsDetailUIModel>, onMoreDetails: (id: CatsDetailUI
 }
 
 @Composable
-fun CatsCard(cat: CatsDetailUIModel, modifier: Modifier = Modifier, onMoreDetails: (id: CatsDetailUIModel?) -> Unit) {
+fun CatsCard(cat: CatDetailUIModel, modifier: Modifier = Modifier, onMoreDetails: (id: CatDetailUIModel?) -> Unit) {
     // TODO 1. Your card UI
     val color by animateColorAsState(targetValue = MaterialTheme.colors.surface)
 
@@ -43,8 +42,8 @@ fun CatsCard(cat: CatsDetailUIModel, modifier: Modifier = Modifier, onMoreDetail
     ) {
 
         Row {
-            Image(
-                painter = rememberAsyncImagePainter(cat.url),
+            AsyncImage(
+                model = cat.url,
                 contentDescription = "CatImage",
                 modifier = Modifier.padding(top = 10.dp),
             )

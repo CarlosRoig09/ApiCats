@@ -3,11 +3,10 @@ package com.example.apicatsdata_roigcarlos
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.activity.compose.setContent
 import androidx.compose.ui.Modifier
 import com.example.apicatsdata_roigcarlos.ui.CatsDataApp
-import com.example.apicatsdata_roigcarlos.ui.model.CatsDetailUIModel
+import com.example.apicatsdata_roigcarlos.ui.model.CatDetailUIModel
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,9 +16,9 @@ class MainActivity : AppCompatActivity() {
             CatsDataApp(modifier = Modifier,onMoreDetails = {startDetailActivity(it)})
         }
     }
-    private fun startDetailActivity(cat : CatsDetailUIModel?){
+    private fun startDetailActivity(cat : CatDetailUIModel?){
         val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("cat", cat)
+        //intent.putExtra("cat", cat)
         startActivity(intent)
     }
 }
