@@ -22,15 +22,10 @@ object CatsApi {
     }
 }
 interface  CatsApiService{
-    suspend fun getCatPhotos() : List<ImageDto>
-    {
-        return mutableListOf<ImageDto?>().apply {
-            getCats().forEach {
-                add(it.image)
-            }
-        }.toList().filterNotNull()
-    }
+
     @Headers("x-api-key: $API_KEY")
+    @GET("./v1/breeds")
+    suspend fun getCatPhotos() : List<ImageDto>
     @GET("./v1/breeds")
     suspend fun getCats() : List<CatsDto>
 }
