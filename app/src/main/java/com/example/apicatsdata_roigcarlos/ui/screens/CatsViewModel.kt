@@ -20,10 +20,10 @@ class CatsViewModel() : ViewModel() {
         private set
     private var  mapper = CatsDtoUiModelMapper()
 
-    /*init {
+    init {
         getCatsPhotos()
         orderCatsPhotosByAlphabet()
-    }*/
+    }
 
      fun getCatsPhotos() {
 

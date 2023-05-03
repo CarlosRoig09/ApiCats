@@ -4,11 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.apicatsdata_roigcarlos.ui.CatsDataApp
-import com.example.apicatsdata_roigcarlos.ui.model.CatDetailUIModel
-import com.example.apicatsdata_roigcarlos.ui.screens.CatsViewModel
 import com.example.apicatsdata_roigcarlos.ui.screens.LogInScreen
 
 class MainActivity : AppCompatActivity() {
@@ -16,10 +11,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setContent{
-            LogInScreen(onClick = {startListActivity()})
+
+            LogInScreen(onClick = {startListActivity(it)})
             }
         }
-    private fun startListActivity(){
-        startActivity(Intent(this, ListAcctivity::class.java))
+    private fun startListActivity(username : List<String>){
+        var count = 0
+        username.forEach {
+            if (it.isNotEmpty()) {
+                count+=1
+            }
+        }
+        if(count>=2) {
+            startActivity(Intent(this, ListAcctivity::class.java))
+        }
     }
 }

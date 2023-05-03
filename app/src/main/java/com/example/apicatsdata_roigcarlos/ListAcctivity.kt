@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.apicatsdata_roigcarlos.ui.CatsDataApp
+import com.example.apicatsdata_roigcarlos.ui.Load
 import com.example.apicatsdata_roigcarlos.ui.model.CatDetailUIModel
 import com.example.apicatsdata_roigcarlos.ui.screens.CatsViewModel
 import com.example.apicatsdata_roigcarlos.ui.screens.DetailCatViewModel
@@ -19,8 +20,17 @@ class ListAcctivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val catsViewModel: CatsViewModel = viewModel()
-            catsViewModel.orderCatsPhotosByAlphabet()
-            CatsDataApp(modifier = Modifier,onMoreDetails = {startDetailActivity(it)},catsViewModel.catsUiState)
+            val catUiState = catsViewModel.catsUiState
+            if(catUiState.isNotEmpty()) {
+                CatsDataApp(
+                    modifier = Modifier,
+                    onMoreDetails = { startDetailActivity(it) },
+                    catsViewModel.catsUiState
+                )
+            }
+            else{
+                Load()
+            }
         }
     }
     private fun startDetailActivity(cat : CatDetailUIModel?){

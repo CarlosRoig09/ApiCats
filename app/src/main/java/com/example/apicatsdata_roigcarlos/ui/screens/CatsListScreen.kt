@@ -68,3 +68,4 @@ fun CatsCard(cat: CatDetailUIModel, modifier: Modifier = Modifier, onMoreDetails
 private fun CatListPreview(){
  //CatsList(catsList = List(2){CatDetailUIModel("1","miau",null,null,"MiauMIauMiau",null,"https://s1.ppllstatics.com/lasprovincias/www/multimedia/202112/12/media/cortadas/gatos-kb2-U160232243326NVC-1248x770@Las%20Provincias.jpg")})
 }
+
