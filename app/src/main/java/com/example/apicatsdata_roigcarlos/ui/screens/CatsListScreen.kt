@@ -3,10 +3,7 @@ package com.example.apicatsdata_roigcarlos.ui.screens
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
@@ -34,7 +31,7 @@ fun CatsCard(cat: CatDetailUIModel, modifier: Modifier = Modifier, onMoreDetails
 
     Card(
         Modifier
-            .padding(15.dp)
+            .padding(5.dp)
             .fillMaxSize()
             .background(
                 color = color
@@ -45,22 +42,22 @@ fun CatsCard(cat: CatDetailUIModel, modifier: Modifier = Modifier, onMoreDetails
             AsyncImage(
                 model = cat.url,
                 contentDescription = "CatImage",
-                modifier = Modifier.padding(top = 10.dp),
+                modifier = Modifier.size(150.dp)
             )
             cat.name?.let {
                 Text(
                     text = it,
-                    modifier = Modifier.padding(top = 25.dp, start = 10.dp)
+                    modifier = Modifier.padding(start = 25.dp,top = 1.dp, bottom = 1.dp)
                 )
             }
         }
-        Column(horizontalAlignment = Alignment.End, modifier = modifier.padding(top = 50.dp)) {
-            cat.description?.let {
-                Text(
-                    text = it,
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 2
-                )
+        Row(modifier = Modifier.padding(top=150.dp)) {
+                cat.description?.let {
+                    Text(
+                        text = it,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 2
+                    )
             }
         }
     }
@@ -69,5 +66,5 @@ fun CatsCard(cat: CatDetailUIModel, modifier: Modifier = Modifier, onMoreDetails
 @Preview
 @Composable
 private fun CatListPreview(){
- //CatsList(catsList = List(2){CatsDetailUIModel("1","miau",null,null,"MiauMIauMiau",null,"https://s1.ppllstatics.com/lasprovincias/www/multimedia/202112/12/media/cortadas/gatos-kb2-U160232243326NVC-1248x770@Las%20Provincias.jpg")})
+ //CatsList(catsList = List(2){CatDetailUIModel("1","miau",null,null,"MiauMIauMiau",null,"https://s1.ppllstatics.com/lasprovincias/www/multimedia/202112/12/media/cortadas/gatos-kb2-U160232243326NVC-1248x770@Las%20Provincias.jpg")})
 }

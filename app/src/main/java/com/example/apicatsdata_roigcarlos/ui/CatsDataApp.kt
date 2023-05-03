@@ -16,7 +16,7 @@ import com.example.apicatsdata_roigcarlos.ui.screens.CatsList
 import com.example.apicatsdata_roigcarlos.ui.screens.CatsViewModel
 
 @Composable
-fun CatsDataApp(modifier: Modifier = Modifier,onMoreDetails: (cat: CatDetailUIModel?) -> Unit) {
+fun CatsDataApp(modifier: Modifier = Modifier,onMoreDetails: (cat: CatDetailUIModel?) -> Unit, catsUIModel: List<CatDetailUIModel>) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = { TopAppBar(title = { Text(stringResource(R.string.app_name)) }) }
@@ -27,8 +27,7 @@ fun CatsDataApp(modifier: Modifier = Modifier,onMoreDetails: (cat: CatDetailUIMo
                 .padding(it),
             color = MaterialTheme.colors.background
         ) {
-            val catsUIModel: CatsViewModel = viewModel()
-            CatsList(catsList = catsUIModel.catsUiState, onMoreDetails = onMoreDetails)
+            CatsList(catsList = catsUIModel, onMoreDetails = onMoreDetails)
            // HomeScreen(catsUIState = catsUIModel.catsUiState)
         }
     }

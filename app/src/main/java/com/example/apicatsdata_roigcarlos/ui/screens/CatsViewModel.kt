@@ -20,11 +20,12 @@ class CatsViewModel() : ViewModel() {
         private set
     private var  mapper = CatsDtoUiModelMapper()
 
-    init {
+    /*init {
         getCatsPhotos()
-    }
+        orderCatsPhotosByAlphabet()
+    }*/
 
-    private fun getCatsPhotos() {
+     fun getCatsPhotos() {
 
         viewModelScope.launch {
             val cats = CatsApi.retrofitService.getCats(15)
@@ -32,7 +33,7 @@ class CatsViewModel() : ViewModel() {
            catsUiState = mapper.map(cats, photos)
         }
     }
-    fun orderCatsPhotosByAlphabet(){
+     fun orderCatsPhotosByAlphabet(){
         val sortedAlphabetCat = catsUiState.sortedBy { it.name}
         catsUiState = sortedAlphabetCat
     }
